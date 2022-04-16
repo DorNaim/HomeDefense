@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "7lw4xc59xcro455h",
         "name": "com.DefaultCompany.HomeDefence",
-        "processId": 13009,
+        "processId": 20151,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -60,6 +60,24 @@
             "deviceId": "7lw4xc59xcro455h",
             "name": "com.DefaultCompany.HomeDefence",
             "processId": 13009,
+            "exited": false
+        },
+        {
+            "deviceId": "7lw4xc59xcro455h",
+            "name": "com.DefaultCompany.HomeDefence",
+            "processId": 16109,
+            "exited": false
+        },
+        {
+            "deviceId": "7lw4xc59xcro455h",
+            "name": "com.DefaultCompany.HomeDefence",
+            "processId": 17927,
+            "exited": false
+        },
+        {
+            "deviceId": "7lw4xc59xcro455h",
+            "name": "com.DefaultCompany.HomeDefence",
+            "processId": 20151,
             "exited": false
         }
     ],

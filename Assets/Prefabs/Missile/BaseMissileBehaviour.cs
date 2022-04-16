@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BaseMissileBehaviour : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 8f;
     public bool flying=true;
     public bool active = true;
 
-    public float timeToLive = 30f;
+    public float timeToLive = 15f;
     public GameObject explosionPrefab;
 
 
@@ -32,19 +32,40 @@ public class BaseMissileBehaviour : MonoBehaviour
         {
             transform.position += speed * Time.deltaTime * transform.forward;
         }
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            // Construct a ray from the current touch coordinates
+            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            RaycastHit hit;
+     
+            if (Physics.Raycast(ray,out hit))
+            {
+                Debug.Log("Collidier" + hit.collider.name);
+                if (hit.collider.gameObject == gameObject)
+                {
+                    onTouched();
+                }
+            }
+        }
+
     }
 
     private void OnMouseDown()
     {
+        onTouched();
+    }
+
+    private void onTouched()
+    {
         Debug.Log("Pressed on missile");
-        if (active) {
+        if (active)
+        {
             active = false;
             flying = false;
             OnTouchedParticles();
             DestroySelf();
         }
     }
-
     private void OnTouchedParticles()
     {
         Instantiate<GameObject>(explosionPrefab, transform.position, new Quaternion(0, 0, 0, 0));
