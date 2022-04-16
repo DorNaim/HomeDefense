@@ -8,14 +8,16 @@ public class BaseMissileBehaviour : MonoBehaviour
     public bool flying=true;
     public bool active = true;
 
-    public float destroyDelay = 5f;
+    public float timeToLive = 30f;
     public GameObject explosionPrefab;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        Input.simulateMouseWithTouches = true;
+        //set this one on MainPlaneBehaviour as it is global
+        //Input.simulateMouseWithTouches = true;
+        Invoke("DestroySelf", timeToLive);
     }
 
     // Update is called once per frame
@@ -39,7 +41,7 @@ public class BaseMissileBehaviour : MonoBehaviour
             active = false;
             flying = false;
             OnTouchedParticles();
-            Destroy(gameObject);
+            DestroySelf();
         }
     }
 
@@ -48,6 +50,10 @@ public class BaseMissileBehaviour : MonoBehaviour
         Instantiate<GameObject>(explosionPrefab, transform.position, new Quaternion(0, 0, 0, 0));
     }
 
+    private void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
 
 
 }

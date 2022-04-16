@@ -19,6 +19,7 @@ public class MainPlaneBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Input.simulateMouseWithTouches = true;
         SetMaterialByWave(1);
     }
 
